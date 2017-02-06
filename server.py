@@ -9,7 +9,7 @@ from jinja2 import Template
 
 from config.settings import *
 
-VHOST_NAME = APP_NAME
+VHOST_NAME = HOST_NAME
 NGINX_VHOST_DIR = '/etc/nginx/conf.d/'
 SUPERVISOR_DIR = '/etc/supervisor/conf.d/'
 GUNICORN_CONFIG_FILE=os.path.join(CONFIG_DIR,"gunicorn-conf.py")
