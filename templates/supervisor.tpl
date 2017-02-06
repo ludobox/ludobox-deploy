@@ -3,7 +3,7 @@
 directory={{ app_dir }}
 environment=PYTHONPATH={{ venv_path}}/bin
 
-command={{venv_path}}/bin/gunicorn wsgi:{{ application }} -c {{gunicorn_conf}}
+command={{venv_path}}/bin/gunicorn 'ludobox.webserver:app' -c {{gunicorn_conf}}
 
 ;user=www-data
 autostart=true
