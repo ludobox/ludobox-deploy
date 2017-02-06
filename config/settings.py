@@ -11,6 +11,7 @@ HOST_NAME = "box.ludobox.net"
 
 LOG_DIR=os.path.join(HOME_DIR,"log")
 CODE_DIR=os.path.join(HOME_DIR, APP_NAME)
+PYTHON_APP_DIR=os.path.join(CODE_DIR, "server")
 MODULE_NAME = "wsgi.py" #
 APP_MAIN_FILE = "application"
 

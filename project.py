@@ -11,6 +11,7 @@ def setup_project():
     update_code_from_git()
     create_virtual_env()
     update_requirements()
+    install_python_app()
     if USE_BOWER : bower_install()
 
 def create_virtual_env():
@@ -33,5 +34,12 @@ def update_requirements():
     """ Update external dependencies on host """
     with virtualenv(VIRTUALENV_PATH):
         cmd = ['pip install']
-        cmd += ['--requirement %s' %  os.path.join(CODE_DIR,'requirements.txt')]
+        cmd += ['--requirement %s' %  os.path.join(PYTHON_APP_DIR,'requirements.txt')]
         run(' '.join(cmd))
+
+def install_python_app():
+    """ Update external dependencies on host """
+    with virtualenv(VIRTUALENV_PATH):
+        with cd(PYTHON_APP_DIR):
+            cmd = "python setup.py develop" # use develop flag to allow new versions
+            run(cmd)
