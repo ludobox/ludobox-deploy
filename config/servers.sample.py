@@ -2,21 +2,19 @@ from fabric.api import *
 
 def staging():
     env.hosts = ['127.0.0.1']
-    env.user  = 'junkware'
-    env.remote_admin  = 'junkware'
+    env.user  = 'ludobox'
+    env.remote_admin  = 'ludobox'
     env.port="2022"
-    env.mongo_user = "root"
-    env.mongo_host = "localhost"
-    env.mongo_db_name = "topogram"
-    env.mongo_db_password = "password"
+
+def rpi():
+    env.hosts = ['192.168.1.30']
+    env.user  = 'pi'
+    env.remote_admin  = 'pi'
+    env.port="2022"
+
 
 def prod():
     env.hosts = ['127.0.0.1']
-    env.user  = 'junkware'
+    env.user  = 'ludobox'
     env.remote_admin  = 'junkware'
     env.port="2022"
-    env.mongo_user = "root"
-    env.mongo_host = "localhost"
-    env.mongo_db_name = "topogram"
-    env.mongo_db_password = "password"
-

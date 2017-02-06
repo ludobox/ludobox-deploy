@@ -1,20 +1,44 @@
-# flask-fabric-deploy
+# Ludobox Deploy
 
-Fabric scripts to deploy projects using Python, Pip, Bower, Gunicorn and Supervisor (tested with Flask on Debian).
+A set of Fabric scripts to deploy Ludobox using Python, Pip, Gunicorn and Supervisor (tested on Debian only).
 
 ## Usage
 
-Edit ```settings.py``` and ```servers.py``` according to your needs
+### Define your servers
 
-    fab setup_debian 
-    fab deploy
-    fab setup_server
-    fab restart
+Copy ```servers.sample.py``` to ```servers.py``` and edit according to your needs
 
-NB : Your project hould have a ```wsgi.py``` file to run the application
+    def prod():
+        env.hosts = ['127.0.0.1']
+        env.user  = 'ludobox'
+        env.remote_admin  = 'junkware'
+        env.port="2022"
+
+### Setup the initial environment
+
+    fab prod setup_debian
+    fab prod init
+    fab prod setup_server # rewrite server config
+
+### Update code and deps
+
+    fab prod deploy
+
+### Remote control your install
+
+    fab prod start
+    fab prod restart
+    fab prod stop
+
+### Pre-requisites
+
+Install Supervisor and Nginx
+
+    sudo apt-get install supervisor nginx
+
 
 ### TODO
 
+* Prod build with `npm run build` on the `/client` rep
 * Auto write Flask config file
-* Add support for Chef / Ansible
-* 
+* Add provisioning with Chef / Ansible
