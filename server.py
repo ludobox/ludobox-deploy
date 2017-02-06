@@ -29,7 +29,8 @@ def make_supervisor_conf():
         'app_dir' : CODE_DIR,
         "gunicorn_conf" : GUNICORN_CONFIG_FILE,
         "venv_path"      : VIRTUALENV_PATH,
-        "application" : APP_MAIN_FILE
+        "application" : APP_MAIN_FILE,
+        'socket':USGWI_SOCKET
     }
 
     if not exists(SUPERVISOR_DIR):
@@ -59,7 +60,8 @@ def make_gunicorn_conf():
     gunicorn_context={
         'pid' : TOPOGRAM_PID,
         'log' : LOG_DIR,
-        'webport' : WEBPORT
+        'webport' : WEBPORT,
+        'socket':USGWI_SOCKET
     }
 
     upload_template("templates/gunicorn.tpl",GUNICORN_CONFIG_FILE, context=gunicorn_context, use_jinja=True, use_sudo=True,backup=False)
@@ -84,7 +86,7 @@ def install_gunicorn():
     run("pip install gunicorn==0.16.1")
 
 def reload_supervisor():
-    sudo("sudo service supervisor restart")
+    sudo('supervisorctl reread %s' % VHOST_NAME)
 
 def start_app():
     """ Start app using supervisor"""

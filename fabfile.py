@@ -10,6 +10,8 @@ from config.servers import staging,  prod
 
 from debian import setup_debian
 from server import setup_server, restart
+from server import stop_app as stop
+from server import start_app as start
 from project import setup_project as deploy
 
 def uptime():
