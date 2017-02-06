@@ -48,7 +48,7 @@ def make_nginx_vhost():
         "port" : WEBPORT
     }
 
-    nginx_config_file_path =  "%s%s"%(NGINX_VHOST_DIR,VHOST_NAME)
+    nginx_config_file_path =  "%s%s.conf"%(NGINX_VHOST_DIR,VHOST_NAME)
     # print nginx_config_file_path
 
     upload_template("templates/nginx.tpl",nginx_config_file_path , context=nginx_context, use_jinja=True, use_sudo=True, backup=False)
