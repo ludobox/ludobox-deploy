@@ -3,5 +3,5 @@ workers = 2
 bind = '0.0.0.0:{{webport}}'
 pidfile= '{{ pid }}'
 debug = True
-loglevel = 'debug'
+loglevel = 'info'
 errorlog = '{{ log }}/gunicorn.log'
