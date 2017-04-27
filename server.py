@@ -83,7 +83,8 @@ def create_logs():
 # supervisor and nginx
 def install_gunicorn():
   with virtualenv(VIRTUALENV_PATH):
-    run("pip install gunicorn==0.16.1")
+    run("pip install gunicorn==18.0")
+    run("pip install gevent-websocket==0.10.1")
 
 def reload_supervisor():
     sudo('supervisorctl reread %s' % VHOST_NAME)

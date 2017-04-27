@@ -20,7 +20,7 @@ STATIC = os.path.join(CODE_DIR,'public')
 
 USE_BOWER = False
 
-WEBPORT=8080
+WEBPORT=8000
 
 RUN_DIR=os.path.join(HOME_DIR,"run")
 USGWI_SOCKET=os.path.join(RUN_DIR,"%s.sock"%HOST_NAME)
