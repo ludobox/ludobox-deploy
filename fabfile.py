@@ -12,7 +12,7 @@ from debian import setup_debian
 from server import setup_server, restart
 from server import stop_app as stop
 from server import start_app as start
-from project import setup_project as deploy
+from project import setup_project
 
 def uptime():
     """ Show number of active connections on the server """
@@ -28,5 +28,9 @@ def local_info():
 
 def init():
     """ Init setup of the project """
-    deploy()
+    setup_project()
     setup_server()
+
+def deploy():
+    setup_project()
+    restart()

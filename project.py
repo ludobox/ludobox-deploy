@@ -10,6 +10,7 @@ def setup_project():
     """ Update the last version of the project """
     update_code_from_git()
     create_virtual_env()
+    install_python_app()
     update_requirements()
     install_python_app()
     if USE_BOWER : bower_install()
