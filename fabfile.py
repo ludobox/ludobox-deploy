@@ -13,6 +13,7 @@ from server import setup_server, restart
 from server import stop_app as stop
 from server import start_app as start
 from project import setup_project
+from content import backup_files
 
 def uptime():
     """ Show number of active connections on the server """
@@ -31,6 +32,9 @@ def init():
     setup_project()
     setup_server()
 
+def backup():
+    backup_files()
+    
 def deploy():
     setup_project()
     restart()
